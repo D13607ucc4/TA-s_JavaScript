@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="nuevoElemento" placeholder="Escribe algo...">
+    <button onclick="agregarElemento()">Añadir elemento</button>
+  
+    <ul id="miLista"></ul>
+  
+    <script>
+      function agregarElemento() {
+        const input = document.getElementById("nuevoElemento");
+        const texto = input.value.trim();
+  
+        if (texto !== "") {
+          const li = document.createElement("li");
+          li.textContent = texto;
+          document.getElementById("miLista").appendChild(li);
+          input.value = ""; // Borrar el texto del input
+        }
+      }
+    </script>
+  
+  </body>
+</html>

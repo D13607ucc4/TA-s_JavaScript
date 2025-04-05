@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .error {
+          color: red;
+          font-size: 0.9em;
+          display: none;
+        }
+      </style>
+</head>
+<body>
+
+    <form id="miFormulario" novalidate>
+      <label>Nombre:
+        <input type="text" id="nombre">
+        <div id="errorNombre" class="error">El nombre es obligatorio.</div>
+      </label>
+      <br><br>
+  
+      <label>Correo electrónico:
+        <input type="email" id="correo">
+        <div id="errorCorreo" class="error">Ingrese un correo válido.</div>
+      </label>
+      <br><br>
+  
+      <label>Contraseña:
+        <input type="password" id="contrasena">
+        <div id="errorContrasena" class="error">La contraseña debe tener al menos 8 caracteres.</div>
+      </label>
+      <br><br>
+  
+      <button type="submit">Enviar</button>
+    </form>
+  
+    <script>
+      const formulario = document.getElementById("miFormulario");
+      const nombre = document.getElementById("nombre");
+      const correo = document.getElementById("correo");
+      const contrasena = document.getElementById("contrasena");
+  
+      const errorNombre = document.getElementById("errorNombre");
+      const errorCorreo = document.getElementById("errorCorreo");
+      const errorContrasena = document.getElementById("errorContrasena");
+  
+      function validarNombre() {
+        if (nombre.value.trim() === "") {
+          errorNombre.style.display = "block";
+          return false;
+        } else {
+          errorNombre.style.display = "none";
+          return true;
+        }
+      }
+  
+      function validarCorreo() {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!regex.test(correo.value.trim())) {
+          errorCorreo.style.display = "block";
+          return false;
+        } else {
+          errorCorreo.style.display = "none";
+          return true;
+        }
+      }
+  
+      function validarContrasena() {
+        if (contrasena.value.length < 8) {
+          errorContrasena.style.display = "block";
+          return false;
+        } else {
+          errorContrasena.style.display = "none";
+          return true;
+        }
+      }
+  
+      // Validación en tiempo real
+      nombre.addEventListener("input", validarNombre);
+      correo.addEventListener("input", validarCorreo);
+      contrasena.addEventListener("input", validarContrasena);
+  
+      // Validación al enviar
+      formulario.addEventListener("submit", function(evento) {
+        const esValido = validarNombre() & validarCorreo() & validarContrasena();
+        if (!esValido) {
+          evento.preventDefault(); // No se envía el formulario si hay errores
+        }
+      });
+    </script>
+  
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <img id="miImagen" 
+         src="imagen1.jpg" 
+         alt="Imagen original" 
+         width="300"
+         onmouseover="cambiarImagen()" 
+         onmouseout="restaurarImagen()">
+  
+    <script>
+      const imagen = document.getElementById("miImagen");
+  
+      function cambiarImagen() {
+        imagen.src = "imagen2.jpg"; // Ruta de la imagen alternativa
+      }
+  
+      function restaurarImagen() {
+        imagen.src = "imagen1.jpg"; // Ruta de la imagen original
+      }
+    </script>
+  
+  </body>
+</html>

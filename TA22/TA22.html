@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="tamanoVentana">Ancho: - px | Alto: - px</p>
+  
+    <script>
+      const parrafo = document.getElementById("tamanoVentana");
+  
+      function actualizarTamano() {
+        const ancho = window.innerWidth;
+        const alto = window.innerHeight;
+        parrafo.textContent = `Ancho: ${ancho}px | Alto: ${alto}px`;
+      }
+  
+      actualizarTamano();
+      
+      window.addEventListener("resize", actualizarTamano);
+    </script>
+  
+  </body>
+</html>
